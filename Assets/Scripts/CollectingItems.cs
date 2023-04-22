@@ -10,6 +10,9 @@ public class CollectingItems : MonoBehaviour
 
     [SerializeField] private Text melonText;
 
+     // for sounds
+    [SerializeField] private AudioSource soundEffectItem;
+
 
     //when colliding with the melon 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,10 +20,13 @@ public class CollectingItems : MonoBehaviour
         //if players hit meon
         if(collision.gameObject.CompareTag("melon"))
         {
+            //playing sound effect
+            soundEffectItem.Play();
             Destroy(collision.gameObject);
             melons++;
             // Debug.Log("Melons: "+melons);
             melonText.text = "Melons: " +melons;
+    
         }
     }
 }

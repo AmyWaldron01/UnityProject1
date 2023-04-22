@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
    [SerializeField] private LayerMask GroundJumpable;
 
    private enum StateOfMovement { idle, running, jumping, falling}
+
+   // for sounds
+   [SerializeField] private AudioSource soundEffectJump;
+    
 //    private StateOfMovement state = StateOfMovement.idle;
 
 
@@ -38,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump") && onGround())
         {
             rb.velocity = new Vector2(rb.velocity.x,forceJump);
+            //playing sound effect
+            soundEffectJump.Play();
         }
 
         UpdatingAnimation();

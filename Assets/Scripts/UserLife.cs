@@ -8,6 +8,9 @@ public class UserLife : MonoBehaviour
     private Animator am;
     private Rigidbody2D rb;
 
+    // for sounds
+    [SerializeField] private AudioSource soundEffectDead;
+
 
     // Start is called before the first frame update
     private void Start()
@@ -27,6 +30,8 @@ public class UserLife : MonoBehaviour
 
     private void Die()
     {
+        //playing sound effect
+        soundEffectDead.Play();
         am.SetTrigger("dead");
         //Make user not move once die
         rb.bodyType = RigidbodyType2D.Static;
